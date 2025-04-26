@@ -168,8 +168,8 @@ const page = () => {
         <h1 className='bg-[#008296] text-white p-5 text-2xl font-bold text-center poppins flex items-center justify-center gap-2'> <img src='/sticky-note.png' className='h-10 w-10 ' /> ToDo <span className='playwrite text-3xl'> List</span></h1>
 
         <form onSubmit={submitHandler}>
-          <div className='flex justify-center w-5/6'>
-            <input type='text' className=' text-black bg-slate-200 rounded-2xl text-2xl border-zinc-800 border-4 m-5 px-4 py-2 w-70' placeholder='Enter Title' value={title} onChange={(e) => {
+          <div className='flex justify-center'>
+            <input type='text' className=' text-black bg-slate-200 rounded-2xl text-2xl border-zinc-800 border-4 m-5 px-4 py-2' placeholder='Enter Title' value={title} onChange={(e) => {
               settitle(e.target.value)
             }} />
           </div>
