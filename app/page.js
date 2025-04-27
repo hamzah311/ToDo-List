@@ -25,7 +25,11 @@ const page = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-
+    if (title.trim() === "") {
+      alert("Title can't be empty.");
+      return;
+    }
+  
     setmainTask([...mainTask, { title, desc }])
 
     settitle("")
@@ -110,7 +114,7 @@ const page = () => {
                 </div>
               ) : (
                 <div className='flex flex-col'>
-                  <h5 className={`text-2xl font-semibold ${t.completed ? 'line-through text-gray-400' : ''}`}>{t.title}</h5>
+                  <h5 className={`text-2xl font-semibold ${t.completed ? 'line-through text-gray-400' : ''}`}>{i+1}.&nbsp;&nbsp;{t.title}</h5>
                   <h6 className={`text-lg font-medium ${t.completed ? 'line-through text-gray-400' : ''}`}>{t.desc}</h6>
                 </div>
               )}
@@ -172,14 +176,13 @@ const page = () => {
             <input type='text' className=' text-black bg-slate-200 rounded-2xl text-2xl border-zinc-800 border-4 m-5 px-4 py-2' placeholder='Enter Title' value={title} onChange={(e) => {
               settitle(e.target.value)
             }} />
-          </div>
-          <div className='flex justify-center'>
+          
             <input type='text' className=' text-black bg-slate-200 rounded-2xl text-2xl border-zinc-800 border-4 m-5 px-4 py-2' placeholder='Add Description' value={desc} onChange={(e) => {
               setdesc(e.target.value)
             }} />
           </div>
           <div className='flex justify-center'>
-            <button className=' bg-[#005663] text-white px-4 py-3 text-2xl font-bold rounded-3xl m-5'>Add Task</button>
+            <button className=' bg-[#005663] hover:bg-[#51a8b6] text-white px-4 py-3 text-2xl font-bold rounded-3xl m-5 border border-white'>Add Task</button>
           </div>
         </form>
         <hr />
@@ -196,11 +199,16 @@ const page = () => {
           >
             Undo Delete
           </button>
+          <div className='task-container'>
           <ul>
             {renderTask}
           </ul>
+          </div>
         </div>
       </div>
+      <footer className="footer bg-black text-white text-center p-4">
+      © 2025 ToDo List App | Hamzah Imtiaz | All rights reserved
+    </footer>
     </>
   )
 }
